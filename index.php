@@ -87,7 +87,61 @@ $acme = Team::start('Acme', [
 ]);
 
 
-var_dump($acme->members())
+//var_dump($acme->members())
+
+
+//Another example with inheritance
+
+class CoffeMaker
+{
+	public function brew()
+	{
+		var_dump('Brewing the coffe');
+
+	}
+}
+
+class SpacialityCoffeMaker extends CoffeMaker
+{
+	public function brewLatte()
+	{
+		var_dump('Brewing a latte');
+	}
+}
+
+
+//(new SpacialityCoffeMaker())->brew();
+//(new SpacialityCoffeMaker())->brewLatte();
+
+class Collection
+{
+	protected array $items;
+
+	public function __construct(array $items)
+	{
+		$this->items = $items;
+	}
+}
+
+class Video
+{
+	public $title;
+	public $length;
+
+	public function __construct($title, $length)
+	{
+		$this->title = $title;
+		$this->length = $length;
+	}
+}
+
+$collection = new Collection([
+	new Video('Some Video', 100),
+	new Video('Some Video 2', 200),
+	new Video('Some Video 3', 300)
+]);
+
+var_dump($collection);
 
 
 ?>
